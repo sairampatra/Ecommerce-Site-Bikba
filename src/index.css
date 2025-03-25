@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.swiper {
+  z-index: 0 !important; /* Lower priority */
+}
+
+.navbar {
+  z-index: 50 !important; /* Higher priority */
+  position: relative; /* Ensure z-index applies */
+}
+/* *{
+  border: 2px solid red;
+} */
+
+html {
+  scroll-behavior: smooth;
+}
+
