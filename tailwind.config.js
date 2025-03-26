@@ -7,6 +7,7 @@ export default {
     extend: {},
   },
   plugins: [require('daisyui'),require('tailwind-scrollbar-hide')],
+  darkMode:"class",
   daisyui: {
     themes: ["light"], // Set theme to light (white background)
   },

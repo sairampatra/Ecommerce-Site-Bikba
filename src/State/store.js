@@ -7,7 +7,8 @@ export const useStore = create((set) => ({
   setisInputOnFocus: (data) => set(() => ({ isInputOnFocus: data })),
 
   searchQuerry:'',
-  setSearchQuerry: (data)=> set(()=>({searchQuerry:data}))
+  setSearchQuerry: (data)=> set(()=>({searchQuerry:data})),
+ 
 
 }  
 

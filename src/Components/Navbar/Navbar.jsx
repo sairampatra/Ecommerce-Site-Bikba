@@ -47,7 +47,9 @@ function Navbar() {
   }
   // console.log(userCredentials)
   return (
-    <div className="top-0 h-16  flex py-2 bg-base-100 items-center fixed z-40 w-full  justify-between px-[2%] text-black drop-shadow-md  ">
+    
+    <div className="dark">
+    <div className=" top-0 h-16 dark:bg-gray-700  flex py-2 bg-base-100 items-center fixed z-50 w-full  justify-between px-[2%] text-black drop-shadow-md  ">  
       <div className="flex">
         <a className="btn btn-ghost text-xl">Bikba</a>
       </div>
@@ -61,7 +63,9 @@ function Navbar() {
             className="input w-full h-10 bg-[#EAE8E9] rounded-lg focus:outline-none focus:ring-0 focus:border-transparent"
             onChange={handleChange}
             onFocus={()=>setisInputOnFocus(true)}
-            onBlur={()=>setisInputOnFocus(false)}
+            onBlur={() => {
+              setTimeout(() => setisInputOnFocus(false), 250); // 1000ms = 1 second
+            }}
           />
         </div>
         {searchTerm &&  <Searchbox />}
@@ -84,7 +88,7 @@ function Navbar() {
             ) : (
               <strong
                 onClick={() => navigate("/login")}
-                className="font-medium"
+                className="font-medium dark:text-white"
               >
                 {" "}
                 Login/Signup
@@ -155,6 +159,7 @@ function Navbar() {
           </ul>
         </div>
       </div>
+    </div>
     </div>
   );
 }

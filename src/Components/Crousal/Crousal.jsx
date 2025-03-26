@@ -5,9 +5,9 @@ import "swiper/css/autoplay";
 import { useState, useEffect } from "react";
 
 const images = [
-  { src: "https://rukminim1.flixcart.com/fk-p-flap/1620/270/image/373914b13f0b4dfb.jpg?q=20" },
-  { src: "https://rukminim1.flixcart.com/fk-p-flap/1620/270/image/9ced9278c127ea98.jpeg?q=20" },
-  { src: "https://rukminim1.flixcart.com/fk-p-flap/1620/270/image/5dbe24535d092e63.jpg?q=20" },
+  { src: "https://static.vecteezy.com/system/resources/previews/011/871/820/non_2x/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-vector.jpg" },
+  { src: "https://static.vecteezy.com/system/resources/previews/004/299/813/non_2x/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-vector.jpg" },
+  { src: "https://static.vecteezy.com/system/resources/previews/003/690/391/non_2x/paper-art-shopping-online-on-smartphone-and-new-buy-sale-promotion-pink-backgroud-for-banner-market-ecommerce-women-concept-free-vector.jpg" },
 ];
 
 export default function Crousal() {
@@ -22,7 +22,7 @@ export default function Crousal() {
   }, [activeIndex]); // Reset when active slide changes
 
   return (
-    <div className="mt-16 relative w-full mx-auto rounded-none h-[50vh] overflow">
+    <div className="mt-16 relative w-full mx-auto rounded-none h-[70vh] overflow">
       <Swiper
         modules={[Autoplay]}
         autoplay={{ delay: 2500, disableOnInteraction: false }}
