@@ -5,10 +5,11 @@ import { fetchProductData } from "../services/fetchProductData";
 import { useEffect, useState } from "react";
 import StarRatingComponent from "../Components/Stars/Stars";
 import { fetchRelatedProductData } from "../services/fetchRelatedProducts";
+import { useStore } from "../State/store";
 
 export default function ProductPage() {
   const navigate = useNavigate();
-
+const{theme}=useStore()
   const { productId } = useParams();
   const { isLoading, data, error } = useQuery({
     queryKey: ["singleProduct",productId],
@@ -39,7 +40,8 @@ export default function ProductPage() {
   }
   
   return (
-    <div className="container mx-auto px-4 py-6 sm:py-10 mt-11">
+    <div className={`${theme}`}>
+    <div className="container mx-auto px-4 py-6 sm:py-10 mt-11 dark:bg-[#161616]">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
         {/* Product Gallery Section */}
         <div className="w-full flex flex-col-reverse lg:flex-row ">
@@ -52,18 +54,20 @@ export default function ProductPage() {
             flex-shrink-0">
             {data?.images?.map((image, index) => (
               <div
-                key={index}
-                className="flex-shrink-0 border cursor-pointer 
-                  w-16 h-16 lg:w-20 lg:h-20 
-                  hover:border-[#00BADB] 
-                  transition-all duration-300"
+              key={index}
+              className="flex-shrink-0 border cursor-pointer 
+              w-16 h-16 lg:w-20 lg:h-20 
+              hover:border-[#00BADB] 
+              dark:hover:border-[#6885b1] 
+              
+              transition-all duration-300"
               >
                 <img
                   src={image}
                   alt={`Product thumbnail ${index}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover "
                   onClick={() => setMainImage(image)}
-                />
+                  />
               </div>
             ))}
           </div>
@@ -76,30 +80,30 @@ export default function ProductPage() {
               width="100%"
               height="100%"
               zoomScale={2.5}
-            />
+              />
           </div>
         </div>
 
         {/* Product Details Section */}
         <div className="w-full space-y-6">
-          <div>
+          <div className="dark:text-[#ECEEF0]">
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif mb-2">
               {data?.title}
             </h1>
             <div className="flex items-center mb-2">
-              <StarRatingComponent rating={data?.rating} />
-              <span className="ml-2 text-sm text-gray-600">
+              <StarRatingComponent rating={data?.rating} color={theme == "dark" ? "#ECEEF0" : "black"}/>
+              <span className="ml-2 text-sm text-gray-600 dark:text-[#ECEEF0]">
                 ({data?.reviews?.length} reviews)
               </span>
             </div>
-            <p className="text-2xl md:text-3xl font-bold text-gray-900">
+            <p className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-[#ECEEF0]">
               ${data?.price}
             </p>
           </div>
 
           <div className="space-y-4">
             {/* Quantity Selector */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 dark:text-[#ECEEF0]">
               <span className="text-sm font-medium">Quantity:</span>
               <div className="flex items-center border rounded-lg">
                 <button className="px-3 py-1 text-xl font-bold">-</button>
@@ -113,25 +117,26 @@ export default function ProductPage() {
               <button className="w-full btn btn-outline 
                 border-black text-black 
                 hover:bg-black hover:text-white 
-                transition duration-500 ease-in-out">
+                transition duration-500 ease-in-out dark:bg-[#EEEEEE] dark:text-[#161616]">
                 ADD TO CART
               </button>
-              <button className="w-full btn 
+              <button className="w-full btn outline-none border-0
                 bg-[#00BADB] text-white 
-                hover:bg-[#0096b0] 
+                hover:bg-[#0096b0] dark:bg-[#6885b1]
+                dark:hover:bg-[#5e79a1]
                 transition duration-500 ease-in-out">
                 BUY NOW
               </button>
               <button className="w-full text-sm text-gray-600 
                 hover:text-black 
-                transition-colors duration-300">
+                transition-colors duration-300 dark:text-[#ECEEF0] dark:hover:text-[#9a9a9b]">
                 More payment options
               </button>
             </div>
           </div>
 
           {/* Product Description */}
-          <div className="bg-gray-50 p-4 rounded-lg">
+          <div className="bg-gray-50 p-4 rounded-lg dark:bg-[#E1DDD7] dark:text-[#111111]">
             <h3 className="text-lg font-semibold mb-2">Product Description</h3>
             <p className="text-gray-700">
               {data?.description}
@@ -142,31 +147,32 @@ export default function ProductPage() {
 
       {/* Related Products Horizontal Scroll */}
       <div className="mt-10 ">
-        <h3 className="text-xl font-semibold mb-4">Related Products</h3>
+        <h3 className="text-xl font-semibold mb-4 dark:text-[#ECEEF0]">Related Products</h3>
         <div className="flex gap-4 pb-4 overflow-x-auto hide-scrollbar">
           {relatedProductData?.map((item, index) => (
             <div 
-              key={index} 
-              className="flex-shrink-0 
-                w-48 sm:w-64 md:w-72 
-                h-48 sm:h-64 md:h-72 
-                border rounded-lg 
-                overflow-hidden bg-gradient-to-b from-transparent via-transparent transition-transform   group-hover:via-black/60 hover:to-black/70 "
-                onClick={()=>navigate(`/SingleProduct/${item.id}`)}
+            key={index} 
+            className="flex-shrink-0 
+            w-48 sm:w-64 md:w-72 
+            h-48 sm:h-64 md:h-72 
+            border rounded-lg dark:bg-[#E1DDD7] dark:border-none 
+            overflow-hidden bg-gradient-to-b from-transparent via-transparent transition-transform   group-hover:via-black/60 hover:to-black/70 to-black/20"
+            onClick={()=>navigate(`/SingleProduct/${item.id}`)}
             >
               
                 <img 
                   src={item?.thumbnail}
                   className="w-full h-full object-cover 
-                    transform hover:scale-125
-                    transition-transform duration-700" 
+                  transform hover:scale-125
+                  transition-transform duration-700" 
                   alt="Related Product" 
-                />
+                  />
            
             </div>
           ))}
         </div>
       </div>
     </div>
+          </div>
   );
-}
+}                                                                        

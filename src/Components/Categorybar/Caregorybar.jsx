@@ -1,6 +1,10 @@
+import { useStore } from "../../State/store";
+
 function Caregorybar() {
+  const{theme}=useStore()
   return (
-    <div className=" mx-5 mt-3 bg-[#EAE8E9] px-6 py-2 flex overflow-x-auto whitespace-nowrap flex-nowrap scrollbar-hide justify-evenly  gap-7 ">
+    <div className={`${theme}`} >
+    <div className= "mt-5 dark:bg-[#161616] dark:border-2 dark:border-[#C5C7CA] dark:text-[#C5C7CA] mx-5  bg-[#EAE8E9] px-6 py-2 flex overflow-x-auto whitespace-nowrap flex-nowrap scrollbar-hide justify-evenly  gap-7 ">
 
 
       <button className="flex flex-col items-center justify-center gap-2">
@@ -31,16 +35,16 @@ function Caregorybar() {
         />
         <span className="hover:text-blue-700">Electronics</span>
       </button>
-<button className="flex flex-col items-center justify-center gap-2">
+<button className="flex flex-col items-center justify-center gap-2 dark:hidden">
         <img
-                className="mix-blend-multiply"
+                className="mix-blend-multiply "
 
           src="https://rukminim1.flixcart.com/flap/64/64/image/ab7e2b022a4587dd.jpg?q=100"
           alt=""
         />
         <span className="hover:text-blue-700">Home & Furniture</span>
       </button>
-<button className="flex flex-col items-center justify-center gap-2">
+<button className="flex flex-col items-center justify-center gap-2 dark:hidden">
         <img
         className="mix-blend-multiply"
           src="https://rukminim1.flixcart.com/fk-p-flap/64/64/image/0139228b2f7eb413.jpg?q=100"
@@ -71,7 +75,7 @@ function Caregorybar() {
       </button>
 
 
-    </div>
+    </div></div>
   );
 }
 

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { SendHorizontal } from "lucide-react";
 import { useEffect, useState,useRef } from "react";
 import { GEMENAI_APIKEY, SYS_PROMPT } from "../../helpers/constraints";
+import { useStore } from "../../State/store";
 
 function ChatBox() {
   const [userMessage, setUserMessage] = useState("");
@@ -10,7 +11,7 @@ function ChatBox() {
   const [loading, setLoading] = useState(true); // Track first message status
   const chatRef = useRef(null);
   const inputRef = useRef(null); // Create a reference for the input field
-
+const{theme}=useStore()
   const {
     refetch,
     isFetching,
@@ -110,15 +111,16 @@ function ChatBox() {
     refetch();
   };
   return (
-    <div className=" m-1 bg-[#00badba9] w-[22vw] h-[60vh] rounded-xl p-4   z-[9999] box-border flex flex-col justify-between ">
+    <div className={`${theme}`}>
+    <div className=" m-1 bg-[#00badba9] dark:bg-[#6885b1c7] w-[22vw] h-[60vh] rounded-xl p-4   z-[9999] box-border flex flex-col justify-between ">
       {error? <div className="w-full h-[100%] text-red-600 flex justify-center items-center font-semibold ">{error.message}</div>: <div
        ref={chatRef}
-      className="overflow-auto scrollbar-hide mb-2 rounded-lg flex flex-col gap items-center">
+       className="overflow-auto scrollbar-hide mb-2 rounded-lg flex flex-col gap items-center">
         {loading &&<span className="loading loading-dots  loading-sm mt-2 mr-[80%]"></span>}
         {history.map((entry, index) => (
           <div
-            key={index}
-            className="w-full flex flex-col justify-between text-wrap gap-5 mb-2 "
+          key={index}
+          className="w-full flex flex-col justify-between text-wrap gap-5 mb-2 "
           >
             {entry.user && (
               <div className="max-w-[75%] bg-white break-words whitespace-normal p-1 rounded-lg px-3 self-end">
@@ -133,27 +135,29 @@ function ChatBox() {
         ))}
         {/* {isFetching && (
           <span className="text-center text-black mt-2 ">Loading...</span>
-        )} */}
+          )} */}
       </div> }
      
       <div className="w-full border-2 flex gap-2 bg-[#EAE8E9] rounded-lg px-1">
         <input
         ref={inputRef}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") handleSendMessage();
-          }}
-          onChange={(e) => {
-            setUserMessage(e.target.value);
-          }}
-          value={userMessage}
-          type="text"
-          className="w-full bg-[#EAE8E9] border-0 outline-0 p-[1px] h-8 items-center"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") handleSendMessage();
+        }}
+        onChange={(e) => {
+          setUserMessage(e.target.value);
+        }}
+        value={userMessage}
+        type="text"
+        className="w-full bg-[#EAE8E9] border-0 outline-0 p-[1px] h-8 items-center"
         />
         <button onClick={handleSendMessage}>
           <SendHorizontal />
         </button>
       </div>
     </div>
+        
+            </div>
   );
 }
 

@@ -9,7 +9,8 @@ export const useStore = create((set) => ({
   searchQuerry:'',
   setSearchQuerry: (data)=> set(()=>({searchQuerry:data})),
  
-
+  theme:'light',
+  setTheme: (data)=> set(()=>({theme:data})),
 }  
 
 

@@ -15,8 +15,12 @@
 
 html {
   scroll-behavior: smooth;
+ 
 }
-
+/* *{
+  margin: 0px;
+  padding: 0px;
+} */
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Hide scrollbar for Chrome, Safari */
 }
@@ -25,4 +29,7 @@ html {
   -ms-overflow-style: none;  /* Hide scrollbar for IE, Edge */
   scrollbar-width: none; /* Hide scrollbar for Firefox */
 }
+/* *{
+  @apply transition-colors duration-200;
+} */
 

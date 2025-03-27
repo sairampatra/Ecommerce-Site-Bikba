@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useStore } from "../../State/store";
 
 const ProductImageZoom = ({
   imageSrc,
@@ -10,7 +11,7 @@ const ProductImageZoom = ({
   const [showZoom, setShowZoom] = useState(false);
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
-
+const{theme}= useStore()
   // Function to calculate the position of the zoomed image
   const calculateZoomPosition = (e) => {
     if (!containerRef.current) return;
@@ -51,42 +52,44 @@ const ProductImageZoom = ({
   };
 
   return (
-    <div className="relative w-full h-full">
+    // <div className={`${theme}`}>
+
+    <div className={`relative w-full h-full ${theme} `}>
       {/* Main product image container */}
       <div
         ref={containerRef}
-        className="w-full h-full overflow-hidden relative cursor-crosshair"
+        className="w-full h-full overflow-hidden relative cursor-crosshair shadow-md  dark:rounded-md  dark:bg-[#E1DDD7]"
         onMouseEnter={handleMouseEnter}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-      >
+        >
         <img 
           src={imageSrc} 
           alt={alt} 
-          className="w-full h-full object-cover" 
-        />
+          className="w-full h-full object-cover " 
+          />
 
         {/* Zoom highlight */}
         {showZoom && (
           <div
-            className="absolute border-2 border-[#00BADB] pointer-events-none"
-            style={{
-              width: `${(1 / zoomScale) * 100}%`,
-              height: `${(1 / zoomScale) * 100}%`,
-              left: `${zoomPosition.x * 100}%`,
-              top: `${zoomPosition.y * 100}%`,
-              transform: "translate(-50%, -50%)",
-            }}
+          className="absolute border-2 border-[#00BADB] pointer-events-none"
+          style={{
+            width: `${(1 / zoomScale) * 100}%`,
+            height: `${(1 / zoomScale) * 100}%`,
+            left: `${zoomPosition.x * 100}%`,
+            top: `${zoomPosition.y * 100}%`,
+            transform: "translate(-50%, -50%)",
+          }}
           />
         )}
       </div>
 
       {showZoom && (
         <div
-          className="hidden lg:block absolute top-0 left-full ml-4 
-          w-[400px] h-[400px] 
-          border rounded-lg overflow-hidden 
-          shadow-md z-50 "
+        className="hidden lg:block absolute top-0 left-full ml-4 
+        w-[400px] h-[400px] dark:bg-[#E1DDD7] dark:bg-opacity-50
+         rounded-lg overflow-hidden 
+        shadow-md z-50 "
         >
           <img
             src={imageSrc}
@@ -98,10 +101,11 @@ const ProductImageZoom = ({
                 zoomPosition.y * 100
               }%`,
             }}
-          />
+            />
         </div>
       )}
     </div>
+      // </div>
   );
 };
 
