@@ -4,7 +4,7 @@ export async function fetchProductData(productId) {
   
     try {
         const {data}= await axiosinstance.get(`https://dummyjson.com/products/${productId}`)
-        console.log(data)
+        // console.log(data)
         return data
     } catch (error) {
       console.log(error);

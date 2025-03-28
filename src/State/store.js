@@ -9,11 +9,10 @@ export const useStore = create((set) => ({
   searchQuerry:'',
   setSearchQuerry: (data)=> set(()=>({searchQuerry:data})),
  
-  theme:'light',
+  theme:'',
   setTheme: (data)=> set(()=>({theme:data})),
+
+  cart:[],
+  setCart: (data)=> set(()=>({cart:data})),
 }  
-
-
-
-
 ));

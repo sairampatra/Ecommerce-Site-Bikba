@@ -29,7 +29,7 @@ function ProductCategories() {
             src="https://zevon-ecommerce.netlify.app/static/media/cat-2.df1f8d0fd74f16c0ce9e.avif"
             alt=""
           />
-          <button className=" absolute bottom-4  w-[40%] h-14 bg-white  hover:bg-black hover:text-white transition duration-500 ease-in-out">
+          <button className=" absolute bottom-4  w-[40%] h-14 bg-white  hover:bg-black hover:text-white transition duration-500 ease-in-out dark:bg-black dark:text-[#C5C7CA] dark:hover:text-[black] dark:hover:bg-[#C5C7CA]">
             adf
           </button>
         </div>
@@ -39,7 +39,7 @@ function ProductCategories() {
             src="https://zevon-ecommerce.netlify.app/static/media/cat-3.4c0d0fe766fccd43142f.jpg"
             alt=""
           />
-          <button className=" absolute bottom-4  w-[40%] h-14 bg-white  hover:bg-black hover:text-white transition duration-500 ease-in-out">
+          <button className=" absolute bottom-4  w-[40%] h-14 bg-white  hover:bg-black hover:text-white transition duration-500 ease-in-out dark:bg-black dark:text-[#C5C7CA] dark:hover:text-[black] dark:hover:bg-[#C5C7CA]">
             adf
           </button>
         </div>

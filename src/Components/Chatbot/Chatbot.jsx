@@ -17,7 +17,7 @@ const {theme}=useStore()
   };
 
   return (
-    <div className={`${theme}`}>
+    <div className={`${theme} `}>
 
     <div className="fixed bottom-5 right-5 flex flex-col items-end">
       {/* Chatbox with animation */}
@@ -36,7 +36,7 @@ const {theme}=useStore()
         className="rounded-full w-[50px] h-[50px] bg-[#00BADB] dark:bg-[#6885b1] text-white flex justify-center items-center shadow-xl transition-all duration-300 hover:scale-110"
         onClick={handleChat}
         >
-        <Turtle />
+        <Turtle  className="dark:text-[#ECEEF0]" />
       </button>
     </div>
         </div>

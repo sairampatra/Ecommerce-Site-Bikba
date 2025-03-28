@@ -77,15 +77,16 @@ function Search() {
   if (isLoadingSearch || isLoading) {
     return <div className="mt-20">Loading...</div>;
   }
-  console.log(error);
+  // console.log(error);
   if ((finalData?.length == 0 ) ) {
     // console.log(finalData);
     return <div className="mt-20">no data...</div>;
   }
+  console.log(finalData)
   return ( 
     <div className={`${theme}`}>
 
-    <div className="mt-16 dark:bg-[#161616]">
+    <div className="mt-16 dark:bg-[#161616] min-h-[91vh]">
       <div className="w-full flex justify-end px-5 ">
       <div className="relative">
   <button

@@ -8,6 +8,7 @@ const Home = lazy(() => import("../../pages/Home"));
 const Search = lazy(() => import("../../pages/Search"));
 const MainLayout = lazy(() => import("../../pages/Layout"));
 const SingleProductPage = lazy(() => import("../../pages/SingleProductPage"));
+const Cart = lazy(() => import("../../pages/Cart"));
 
 function Routing() {
   return (
@@ -41,6 +42,14 @@ function Routing() {
           element={
             <Suspense fallback={<h1 className="text-black mt-20">Loading...</h1>}>
               <SingleProductPage />
+            </Suspense>
+          }
+        />
+         <Route
+          path="/cart"
+          element={
+            <Suspense fallback={<h1 className="text-black mt-20">Loading...</h1>}>
+              <Cart />
             </Suspense>
           }
         />

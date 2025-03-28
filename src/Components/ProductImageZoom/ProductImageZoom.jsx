@@ -72,7 +72,7 @@ const{theme}= useStore()
         {/* Zoom highlight */}
         {showZoom && (
           <div
-          className="absolute border-2 border-[#00BADB] pointer-events-none"
+          className="absolute border-2 border-[#00BADB] pointer-events-none dark:border-[#6885b1]"
           style={{
             width: `${(1 / zoomScale) * 100}%`,
             height: `${(1 / zoomScale) * 100}%`,

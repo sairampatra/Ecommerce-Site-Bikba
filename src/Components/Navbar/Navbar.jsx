@@ -26,6 +26,7 @@ function Navbar() {
   const debouncedSearchTerm = useDebounce(searchTerm, 1000);
   const { logout, userCredentials, currentUser } = useAuth();
   const [display, setDisplay] = useState(false);
+  const [cartNum, setCartNum] = useState(0);
   const {
     setSearchSuggestions,
     setSearchQuerry,
@@ -33,6 +34,7 @@ function Navbar() {
     setisInputOnFocus,
     theme,
     setTheme,
+    cart
   } = useStore();
   const { isLoading, isFetching, isError, error, data } = useQuery({
     queryKey: ["searchProduct", debouncedSearchTerm],
@@ -54,7 +56,10 @@ function Navbar() {
     setSearchTerm(e.target.value);
     setSearchQuerry(e.target.value);
   };
-  // console.log(userCredentials)
+  useEffect(()=>{
+const cartData = localStorage.getItem('cart')
+setCartNum(JSON.parse(cartData)?.length)
+  },[cart])
   return (
     <div className={`${theme}`}>
       <div className=" border-b-2 border-[#EBEDEE]  top-0 h-16 dark:bg-[#161616] dark:text-[#EBEDEE]  flex py-2 bg-base-100 items-center fixed z-50 w-full  justify-between px-[2%] text-black drop-shadow-md  ">
@@ -121,10 +126,11 @@ function Navbar() {
               <ShoppingCart
                 strokeWidth={1.5}
                 className="hover:text-blue-700 dark:hover:text-[#BFB169]"
+                onClick={() => navigate("/cart")}
               />
             </div>
-            <span className="rounded-[50%] badge-xs indicator-item bg-[#00BADB] dark:bg-[#6885B1] p-1 text-white flex justify-center items-center h-5 w-5 text-[12px]">
-              1{/* {watchList?.length > 99 ? "99+" : watchList?.length} */}
+            <span className={`rounded-[50%] badge-xs  indicator-item bg-[#00BADB] dark:bg-[#6885B1] p-2 text-white flex justify-center items-center h-5 w-5 text-[12px] ${cartNum > 0 ? "block" : "hidden"}`}>
+                   {cartNum > 99 ? "99+" : cartNum}
             </span>
           </div>
 
